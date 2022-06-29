@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import ROOT
 import matplotlib.pyplot as plt
 
@@ -15,3 +16,21 @@ all_events_2 = [[hist2.GetBinContent(x, y) for x in range(nbins)] for y in range
 for i in range(10):
     plt.plot(all_events_1[0])
     plt.show()
+=======
+import ROOT
+import matplotlib.pyplot as plt
+
+filename = ""
+f = ROOT.TFile.Open(filename, "READ")
+tree = f.Get("DepositionGeant4")
+hist1 = tree.Get("detection_time_scintillator_box1")
+hist2 = tree.Get("detection_time_scintillator_box2")
+
+nbins = 1000
+
+all_events_1 = [[hist1.GetBinContent(x, y) for x in range(nbins)] for y in range(nbins)]
+all_events_2 = [[hist2.GetBinContent(x, y) for x in range(nbins)] for y in range(nbins)]
+
+plt.plot(all_events_1[0])
+plt.show()
+>>>>>>> 0d50751edd079b65e24dbb783a9248257c912587
