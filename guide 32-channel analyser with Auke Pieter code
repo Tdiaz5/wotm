@@ -1,0 +1,44 @@
+On 14/06 Auke Pieter, AP, gave an explanation of the multi channel analyser and how it functions. 
+The firmware for the analyser was made for a project for AP. What the firmware can do can be seen from the firmware gui on the pc. 
+The energy values displayed are in channel counts. 
+The multi channel analyser can readout 2^14 different voltages across a range of 0-2V. 
+This means that each channel count is 0.1221 mV. 
+The time values are in clock cycles which are 12.5 ns. 
+
+The settings for each channel seperately are:
+
+- (GAIN) Amplify the voltages recieved such that the detected voltages become higher or lower.
+
+- (THRS) trigger on a threshold energy value above a baseline
+
+- (INVERT) Invert the recieved voltages such that the signal becomes a positive peak
+
+- (BASE) install a baseline voltage. 
+  A dynamic baseline voltage is calibrated by the firmware after each trigger but BASE will be used as the starting point for the calibration.
+
+- (TOFF) The time-offset. It is there to make sure that t=0 is the same for all channels.
+
+-(HV) unkown
+
+The settings for the data analysis in general are:
+
+- (INTTIME) the timewindow used for integration. 
+  The surface area under the curve and above the baseline is proportional to the total energy deposited by the muon. 
+  INTTIME determines for how long the curve will be integrated
+
+- (PREINIT) unkwown
+
+- (BLLEN) the length of time during which the baseline is calibrated. (BASE) will be used as a starting point. 
+
+-(BLHOLD) the time waited after which the baseline is calibrated.
+
+- (WINDOW) The time window in which decays or double decays can occur.
+
+- (V_offset) the voltage offset before the data enters the channel. 
+  Alter if the signal goes outside the limits of the multi channel analyser.
+
+- (NMIN) how many channels need to have hit above the threshold before the event is saved. 
+  If less than NMIN channels record a peak over threshold the event will be discarded
+
+- (EMIN) The minimum deposited energy summed across all channels required to save the event. 
+  If an event occurs but the integrated energy of both channels summed together is less than EMIN the event will be discarded.
