@@ -1,3 +1,8 @@
+# Author: Tobias den Hollander
+# Data: 7-7-2022
+#
+# Rebins a list by a given factor
+
 import pickle
 from tkinter import N
 import matplotlib.pyplot as plt
