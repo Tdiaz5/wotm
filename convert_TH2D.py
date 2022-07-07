@@ -2,6 +2,7 @@ import ROOT
 import pickle
 
 filename = "modules.root"
+
 f = ROOT.TFile.Open(filename, "READ")
 tree = f.Get("DepositionGeant4")
 hist1 = tree.Get("detection_time_scintillator_box1")
