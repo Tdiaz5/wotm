@@ -1,3 +1,9 @@
+# Author: Tobias den Hollander
+# Data: 7-7-2022
+#
+# Converts our root file into python lists
+# This is mostly useful so that further programs can be run without root
+
 import ROOT
 import pickle
 
