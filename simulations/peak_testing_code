@@ -1,0 +1,23 @@
+# Author: Tobias den Hollander
+# Data: 8-7-2022
+#
+# Simple check to see if there are second peaks
+
+import pickle
+
+# ------------- PARAMETERS TO EDIT -----------------
+filename = "500events_1MeV_rebinned"
+path = "data_files/"
+format = ".pkl"
+rebinning_factor = 20
+# --------------------------------------------------
+
+f = open(path + filename + format, 'rb')
+all_events_1, all_events_2 = pickle.load(f)
+
+for event in all_events_1:
+    for j, item in enumerate(event):
+            # check if there is a nonzero element after the 3rd bin, which
+            # should be the case if there are second peaks
+            if item > 0.1 and j > 5:
+                print(j, item)
