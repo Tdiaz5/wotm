@@ -8,7 +8,7 @@ from tkinter import N
 import matplotlib.pyplot as plt
 
 # ------------- PARAMETERS TO EDIT -----------------
-filename = "1000events_1MeV_realscale"
+filename = "500events_1MeV"
 path = "data_files/"
 format = ".pkl"
 rebinning_factor = 20
@@ -37,12 +37,17 @@ events_1_rebinned = [rebin(event, rebinning_factor) for event in all_events_1]
 events_2_rebinned = [rebin(event, rebinning_factor) for event in all_events_2]
 
 with open(path + filename + '_rebinned' + format, 'wb') as f:
-    pickle.dump(events_1_rebinned, events_2_rebinned, f)
+    pickle.dump([events_1_rebinned, events_2_rebinned], f)
 
 # plotting code
-# for i in range(len(all_events_1)):
-#     plt.bar([4 * i for i in range(len(events_1_rebinned[i]))], events_1_rebinned[i], width=4, align="center")
-#     plt.title("Simulation of a 1 MeV muon detection")
-#     plt.xlabel("time (ns)")
-#     plt.ylabel("photon count")
-#     plt.show()
+for i in range(len(events_1_rebinned[i])):
+    event = events_1_rebinned[i]
+
+    plt.bar([4 * i for i in range(len(events_1_rebinned[i]))], events_1_rebinned[i], width=4, align="center")
+    plt.title("Simulation of a 1 MeV muon detection")
+    plt.xlabel("time (ns)")
+    plt.ylabel("photon count")
+    # plt.show()
+    plt.draw()
+    plt.pause(0.1)
+    plt.clf()
